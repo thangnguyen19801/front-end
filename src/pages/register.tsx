@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import {useAppSelector, useAppDispatch} from "../redux/hook"
-import { useNavigate, Link } from "react-router-dom";
-import { register } from "../redux/actions/authAction";
-import "../styles/register/register.css"
+import React, { useState, useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../redux/hook';
+import { useNavigate, Link } from 'react-router-dom';
+import { register } from '../redux/actions/authAction';
+import '../styles/register/register.css';
 
 const Register = () => {
   const { auth, alert }: any = useAppSelector((state) => state);
@@ -10,21 +10,22 @@ const Register = () => {
   const navigate = useNavigate();
 
   const initialState = {
-    fullname: "",
-    username: "",
-    email: "",
-    password: "",
-    cf_password: "",
-    gender: "none",
+    fullname: '',
+    username: '',
+    email: '',
+    password: '',
+    cf_password: '',
+    gender: 'none',
   };
   const [userData, setUserData] = useState(initialState);
-  const { fullname, username, email, password, cf_password, gender } = userData;
+  const { fullname, username, email, password, cf_password, gender } =
+    userData;
 
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
 
   useEffect(() => {
-    if (auth.token) navigate("/");
+    if (auth.token) navigate('/');
   }, [auth.token, navigate]);
 
   const handleChangeInput = (e: any) => {
@@ -51,12 +52,12 @@ const Register = () => {
             name="fullname"
             placeholder="Full name"
             style={{
-              border: `${alert.fullname ? "1px solid red" : ""}`,
-              background: `${alert.fullname ? "#fd2d6a14" : ""}`,
+              border: `${alert.fullname ? '1px solid red' : ''}`,
+              background: `${alert.fullname ? '#fd2d6a14' : ''}`,
             }}
           />
           <small className="form-text text-danger">
-            {alert.fullname ? alert.fullname : ""}
+            {alert.fullname ? alert.fullname : ''}
           </small>
         </div>
 
@@ -66,16 +67,16 @@ const Register = () => {
             className="form-control"
             id="username"
             onChange={handleChangeInput}
-            value={username.replace(/ /g, "")}
+            value={username.replace(/ /g, '')}
             name="username"
             placeholder="Username"
             style={{
-              border: `${alert.username ? "1px solid red" : ""}`,
-              background: `${alert.username ? "#fd2d6a14" : ""}`,
+              border: `${alert.username ? '1px solid red' : ''}`,
+              background: `${alert.username ? '#fd2d6a14' : ''}`,
             }}
           />
           <small className="form-text text-danger">
-            {alert.username ? alert.username : ""}
+            {alert.username ? alert.username : ''}
           </small>
         </div>
 
@@ -89,19 +90,19 @@ const Register = () => {
             name="email"
             placeholder="Email Address"
             style={{
-              border: `${alert.email ? "1px solid red" : ""}`,
-              background: `${alert.email ? "#fd2d6a14" : ""}`,
+              border: `${alert.email ? '1px solid red' : ''}`,
+              background: `${alert.email ? '#fd2d6a14' : ''}`,
             }}
           />
           <small className="form-text text-danger">
-            {alert.email ? alert.email : ""}
+            {alert.email ? alert.email : ''}
           </small>
         </div>
 
         <div className="mb-3 form-group">
           <div className="pass">
             <input
-              type={typePass ? "text" : "password"}
+              type={typePass ? 'text' : 'password'}
               className="form-control"
               id="password"
               onChange={handleChangeInput}
@@ -109,23 +110,23 @@ const Register = () => {
               name="password"
               placeholder="Password"
               style={{
-                border: `${alert.password ? "1px solid red" : ""}`,
-                background: `${alert.password ? "#fd2d6a14" : ""}`,
+                border: `${alert.password ? '1px solid red' : ''}`,
+                background: `${alert.password ? '#fd2d6a14' : ''}`,
               }}
             />
             <small onClick={() => setTypePass(!typePass)}>
-              {typePass ? "Hide" : "Show"}
+              {typePass ? 'Hide' : 'Show'}
             </small>
           </div>
           <small className="form-text text-danger">
-            {alert.password ? alert.password : ""}
+            {alert.password ? alert.password : ''}
           </small>
         </div>
 
         <div className="mb-3 form-group">
           <div className="pass">
             <input
-              type={typeCfPass ? "text" : "password"}
+              type={typeCfPass ? 'text' : 'password'}
               className="form-control"
               id="cf_password"
               onChange={handleChangeInput}
@@ -133,16 +134,16 @@ const Register = () => {
               name="cf_password"
               placeholder="Confirm Password"
               style={{
-                border: `${alert.cf_password ? "1px solid red" : ""}`,
-                background: `${alert.cf_password ? "#fd2d6a14" : ""}`,
+                border: `${alert.cf_password ? '1px solid red' : ''}`,
+                background: `${alert.cf_password ? '#fd2d6a14' : ''}`,
               }}
             />
             <small onClick={() => setTypeCfPass(!typeCfPass)}>
-              {typeCfPass ? "Hide" : "Show"}
+              {typeCfPass ? 'Hide' : 'Show'}
             </small>
           </div>
           <small className="form-text text-danger">
-            {alert.cf_password ? alert.cf_password : ""}
+            {alert.cf_password ? alert.cf_password : ''}
           </small>
         </div>
 
@@ -187,7 +188,7 @@ const Register = () => {
         </button>
 
         <p className="my-2">
-          You already have an account?{" "}
+          You already have an account?{' '}
           <a href="/Login" className="btn btn-danger">
             Login Now
           </a>

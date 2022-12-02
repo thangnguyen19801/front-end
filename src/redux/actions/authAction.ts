@@ -1,6 +1,6 @@
-import { GLOBALTYPES } from "./globalTypes";
-import { postDataAPI } from "../../utils/fetchData";
-import valid from "../../utils/valid";
+import { GLOBALTYPES } from './globalTypes';
+import { postDataAPI } from '../../utils/fetchData';
+import valid from '../../utils/valid';
 
 export const login = (data: any) => async (dispatch: any) => {
   dispatch({
@@ -9,7 +9,7 @@ export const login = (data: any) => async (dispatch: any) => {
   });
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await postDataAPI("login", data);
+    const res = await postDataAPI('login', data);
     dispatch({
       type: GLOBALTYPES.AUTH,
       payload: {
@@ -18,7 +18,7 @@ export const login = (data: any) => async (dispatch: any) => {
       },
     });
 
-    localStorage.setItem("firstLogin", "true");
+    localStorage.setItem('firstLogin', 'true');
 
     dispatch({
       type: GLOBALTYPES.ALERT,
@@ -27,7 +27,7 @@ export const login = (data: any) => async (dispatch: any) => {
       },
     });
   } catch (err) {
-    if(err instanceof Error) {
+    if (err instanceof Error) {
       dispatch({
         type: GLOBALTYPES.ALERT,
         payload: {
@@ -39,11 +39,11 @@ export const login = (data: any) => async (dispatch: any) => {
 };
 
 export const refreshToken = () => async (dispatch: any) => {
-  const firstLogin = localStorage.getItem("firstLogin");
+  const firstLogin = localStorage.getItem('firstLogin');
   if (firstLogin) {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     try {
-      const res = await postDataAPI("refresh_token", "");
+      const res = await postDataAPI('refresh_token', '');
       dispatch({
         type: GLOBALTYPES.AUTH,
         payload: {
@@ -53,7 +53,7 @@ export const refreshToken = () => async (dispatch: any) => {
       });
       dispatch({ type: GLOBALTYPES.ALERT, payload: {} });
     } catch (err) {
-      if(err instanceof Error) {
+      if (err instanceof Error) {
         dispatch({
           type: GLOBALTYPES.ALERT,
           payload: {
@@ -74,7 +74,7 @@ export const register = (data: any) => async (dispatch: any) => {
   }
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await postDataAPI("register", data);
+    const res = await postDataAPI('register', data);
     dispatch({
       type: GLOBALTYPES.AUTH,
       payload: {
@@ -83,7 +83,7 @@ export const register = (data: any) => async (dispatch: any) => {
       },
     });
 
-    localStorage.setItem("firstLogin", "true");
+    localStorage.setItem('firstLogin', 'true');
 
     dispatch({
       type: GLOBALTYPES.ALERT,
@@ -92,7 +92,7 @@ export const register = (data: any) => async (dispatch: any) => {
       },
     });
   } catch (err) {
-    if(err instanceof Error) {
+    if (err instanceof Error) {
       dispatch({
         type: GLOBALTYPES.ALERT,
         payload: {
